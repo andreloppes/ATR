@@ -148,11 +148,16 @@ e se são posições ainda não visitadas (ou seja, caracter 'x') e
 
   // Imprime o labirinto
   print_maze();
+
       // Verifica se o vetor nao esta vazio.
       // Caso não esteja, pegar o primeiro valor de
       // valid_positions, remove-lo e chamar a funçao walk com esse valor
+  if(valid_positions.size() > 0){
       pos_t next_position = valid_positions.top();
-  valid_positions.pop();
+      valid_positions.pop();
+
+     walk(next_position);
+  }
 }
 
 int main(int argc, char *argv[]) {
