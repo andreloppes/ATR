@@ -97,7 +97,7 @@ e se são posições ainda não visitadas (ou seja, caracter 'x') e
            - pos.i, pos.j-1
            - pos.i+1, pos.j
            - pos.i-1, pos.j
-           Caso alguma das posiçÕes validas seja igual a 's', terminar o
+           Caso alguma das posiçÕes validas seja igual a 'o', terminar o
      programa
    */
   if(pos.i > 0 && pos.i < num_rows && pos.j > 0 && pos.j < num_cols){
@@ -108,7 +108,7 @@ e se são posições ainda não visitadas (ou seja, caracter 'x') e
       valid_pos.j = pos.j+1;
       valid_positions.push(valid_pos);
     }
-    if(maze[pos.i][pos.j+1] == 's'){
+    if(maze[pos.i][pos.j+1] == 'o'){
       return;
     }
 
@@ -119,7 +119,7 @@ e se são posições ainda não visitadas (ou seja, caracter 'x') e
       valid_pos.j = pos.j-1;
       valid_positions.push(valid_pos);
     }
-    if(maze[pos.i][pos.j-1] == 's'){
+    if(maze[pos.i][pos.j-1] == 'o'){
       return;
     }
 
@@ -130,7 +130,7 @@ e se são posições ainda não visitadas (ou seja, caracter 'x') e
       valid_pos.j = pos.j;
       valid_positions.push(valid_pos);
     }
-    if(maze[pos.i+1][pos.j] == 's'){
+    if(maze[pos.i+1][pos.j] == 'o'){
       return;
     }
 
@@ -141,7 +141,7 @@ e se são posições ainda não visitadas (ou seja, caracter 'x') e
       valid_pos.j = pos.j;
       valid_positions.push(valid_pos);
     }
-    if(maze[pos.i-1][pos.j] == 's'){
+    if(maze[pos.i-1][pos.j] == 'o'){
       return;
     }
   }

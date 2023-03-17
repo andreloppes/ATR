@@ -96,7 +96,7 @@ e se são posições ainda não visitadas (ou seja, caracter 'x') e
            - pos.i, pos.j-1
            - pos.i+1, pos.j
            - pos.i-1, pos.j
-           Caso alguma das posiçÕes validas seja igual a 's', terminar o
+           Caso alguma das posiçÕes validas seja igual a 'o', terminar o
      programa
    */
 
