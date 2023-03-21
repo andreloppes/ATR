@@ -36,8 +36,9 @@ pos_t load_maze(const char *file_name) {
   pos_t initial_pos;
   int num[2];
   FILE *pFile;
-  // Abre o arquivo para leitura (fopen)
-  pFile = fopen("maze.txt", "rw");
+
+  pFile = fopen(file_name, "r");
+
   if (pFile == NULL) // Se não conseguiu criar
   {
     cout << "Erro na leitura do arquivo\n" << endl;
@@ -100,48 +101,48 @@ e se são posições ainda não visitadas (ou seja, caracter 'x') e
            Caso alguma das posiçÕes validas seja igual a 'o', terminar o
      programa
    */
-  if(pos.i > 0 && pos.i < num_rows && pos.j > 0 && pos.j < num_cols){
+  if (pos.i > 0 && pos.i < num_rows && pos.j > 0 && pos.j < num_cols) {
     // LEFT
-    if(maze[pos.i][pos.j+1] == 'x'){
+    if (maze[pos.i][pos.j + 1] == 'x') {
       pos_t valid_pos;
       valid_pos.i = pos.i;
-      valid_pos.j = pos.j+1;
+      valid_pos.j = pos.j + 1;
       valid_positions.push(valid_pos);
     }
-    if(maze[pos.i][pos.j+1] == 'o'){
+    if (maze[pos.i][pos.j + 1] == 'o') {
       return;
     }
 
     // RIGHT
-    if(maze[pos.i][pos.j-1]){
-    pos_t valid_pos;
+    if (maze[pos.i][pos.j - 1]) {
+      pos_t valid_pos;
       valid_pos.i = pos.i;
-      valid_pos.j = pos.j-1;
+      valid_pos.j = pos.j - 1;
       valid_positions.push(valid_pos);
     }
-    if(maze[pos.i][pos.j-1] == 'o'){
+    if (maze[pos.i][pos.j - 1] == 'o') {
       return;
     }
 
     // UP
-    if(maze[pos.i+1][pos.j]){
-    pos_t valid_pos;
-      valid_pos.i = pos.i+1;
+    if (maze[pos.i + 1][pos.j]) {
+      pos_t valid_pos;
+      valid_pos.i = pos.i + 1;
       valid_pos.j = pos.j;
       valid_positions.push(valid_pos);
     }
-    if(maze[pos.i+1][pos.j] == 'o'){
+    if (maze[pos.i + 1][pos.j] == 'o') {
       return;
     }
 
     // DOWN
-    if(maze[pos.i-1][pos.j]){
-    pos_t valid_pos;
-      valid_pos.i = pos.i-1;
+    if (maze[pos.i - 1][pos.j]) {
+      pos_t valid_pos;
+      valid_pos.i = pos.i - 1;
       valid_pos.j = pos.j;
       valid_positions.push(valid_pos);
     }
-    if(maze[pos.i-1][pos.j] == 'o'){
+    if (maze[pos.i - 1][pos.j] == 'o') {
       return;
     }
   }
@@ -149,19 +150,20 @@ e se são posições ainda não visitadas (ou seja, caracter 'x') e
   // Imprime o labirinto
   print_maze();
 
-      // Verifica se o vetor nao esta vazio.
-      // Caso não esteja, pegar o primeiro valor de
-      // valid_positions, remove-lo e chamar a funçao walk com esse valor
-  if(valid_positions.size() > 0){
-      pos_t next_position = valid_positions.top();
-      valid_positions.pop();
+  // Verifica se o vetor nao esta vazio.
+  // Caso não esteja, pegar o primeiro valor de
+  // valid_positions, remove-lo e chamar a funçao walk com esse valor
+  if (valid_positions.size() > 0) {
+    pos_t next_position = valid_positions.top();
+    valid_positions.pop();
 
-     walk(next_position);
+    walk(next_position);
   }
 }
 
 int main(int argc, char *argv[]) {
   // carregar o labirinto com o nome do arquivo recebido como argumento (argv[])
-  pos_t initial_pos = load_maze("maze.txt");
+//  printf("Nome do arquivo: %s", argv[0]);
+  pos_t initial_pos = load_maze(argv[0]);
   walk(initial_pos);
 }
